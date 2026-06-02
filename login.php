@@ -2,14 +2,14 @@
 
 
 require_once("conexion.php");
-require_once("session.php")
+require_once("session.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 $name=$_POST["username"];
 $contra=$_POST["password"];
  
-$selec="SELECT username,password FROM usuarios where username =:username";
+$selec="SELECT es_admin,username,password FROM usuarios where username =:username";
 
 $pepara=$gbd->prepare($selec);
 
@@ -22,8 +22,35 @@ $pepara->execute([
     
     ]);
 
- $nuevo=$pepara;
+ $nuevo=$pepara->fecth(PDO::fecth_assoc);
+ //si se que no se pone asi pero si fuera asi funcionaria nuevo
+
+
+
+
+
+
+
+
  
+
+if($nuevo){
+if(password_verify($contra,$nuevo["password"])){
+    
+$_SESSION["username"]=$name;
+$_SESSION_["es_admin"]=$_SESSION["es_admin"];
+
+
+set_cookie("id",$nuevo["username"],time()+ 35000 + "/");
+header("Location:login.php");
+exit;
+
+
+}
+
+
+
+};
 
 
 }

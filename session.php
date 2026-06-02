@@ -1,5 +1,5 @@
  <?php
-if(!isset($_COOKIE["id"])){
+if(isset($_COOKIE["id"])){
 
 
 

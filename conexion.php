@@ -8,6 +8,7 @@ define("DB_PASS","");
 
 $dsn="mysql:host=".DB_HOST.";dbname=".DB_NAME;
 //creo que me falla algo que es una tonteria muy grande
+echo "bien";
 try {
  $gbd=NEW PDO($dsn,DB_USER,DB_PASS);
  
