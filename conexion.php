@@ -2,7 +2,7 @@
 
 
 define("DB_HOST","localhost");
-define("DB_NAME","funciona");
+define("DB_NAME","gestion_usuarios");
 define("DB_USER","root");
 define("DB_PASS","");
 //mira , te hare parte del codigo en texto porque no me parece justo que por un error que a saber cual es
