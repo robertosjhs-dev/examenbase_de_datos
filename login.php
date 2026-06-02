@@ -1,3 +1,44 @@
+<?php
+
+
+require_once("conexion.php");
+
+if($_SERVER["REQUEST_METHOD"]=="post"){
+
+$name=$_POST["username"];
+$contra=$_POST["password"];
+ 
+$selec="SELECT username,password form usuarios where username=:username";
+
+$pepara=$gbd->prepare($selec);
+
+
+
+
+
+$pepara->execute([
+    ":username"=>$name
+    
+    ]);
+
+$fina=$pepara->fecthall();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="es">
