@@ -3,12 +3,12 @@
 
 require_once("conexion.php");
 
-if($_SERVER["REQUEST_METHOD"]=="post"){
+if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 $name=$_POST["username"];
 $contra=$_POST["password"];
  
-$selec="SELECT username,password form usuarios where username=:username";
+$selec="SELECT username,password FROM usuarios where username =:username";
 
 $pepara=$gbd->prepare($selec);
 
@@ -21,7 +21,7 @@ $pepara->execute([
     
     ]);
 
-$fina=$pepara->fecthall();
+$fina=$pepara->;
 
 
 
