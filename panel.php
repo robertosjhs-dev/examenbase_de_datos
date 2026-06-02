@@ -1,15 +1,16 @@
 <?php
- if($_SESSION["es_admin"]!==1){
-//esto me sirve para que haya seguridad
-//evita que cualqueir persona que NO SEA en el es_admin ES 1
-//lo mande a login.php
-header("location:login.php");
-exit;
-
-
-
- }
-
+//tengo mal esto
+// if($_SESSION["es_admin"]!==1){
+////esto me sirve para que haya seguridad
+////evita que cualqueir persona que NO SEA en el es_admin ES 1
+////lo mande a login.php
+//header("location:login.php");
+//exit;
+//
+//
+//
+// }
+//
 
 require_once("conexion.php");
  
