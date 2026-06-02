@@ -11,7 +11,7 @@ $dsn="mysql:host=".DB_HOST.";dbname=".DB_NAME;
 try {
  $gbd=NEW PDO($dsn,DB_USER,DB_PASS);
  
-} catch (pdoExpceiton  $th) {
+} catch (PDOExecption  $th) {
  $th->getMessage();
  echo "falto" . $th;
 }
