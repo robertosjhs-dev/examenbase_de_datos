@@ -4,15 +4,19 @@
 require_once("conexion.php");
 require_once("session.php");
 
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"]==="POST"){
+//cogemos los metemos del formulario
+
 
 $name=$_POST["username"];
 $contra=$_POST["password"];
+//la infor de los formularios se la damos esas valores
  
 $selec="SELECT es_admin,username,password FROM usuarios where username =:username";
-
+//selecionamos lo que queremos , en este caso queremos queremos si es admin y la contraseña
+//el :username es como una variable temporal osea le decimos que username sera eso y ya en el execute le decimos su valor
 $pepara=$gbd->prepare($selec);
-
+//le decimos que con la consulta del selec me la prepare usando los valores del gbd que son bd_user y contraseña y ademas el host + el nombre de la tabla
 
 
 
@@ -21,28 +25,28 @@ $pepara->execute([
     ":username"=>$name
     
     ]);
-
- $nuevo=$pepara->fecth(PDO::fecth_assoc);
+//la ejecutamos y le decimos que username tiene el valor de name
+ $nuevo=$pepara->fetch(PDO::FETCH_ASSOC);
  //si se que no se pone asi pero si fuera asi funcionaria nuevo
+ //osea se que tengo mal el fecth_assoc y ahora no me sale pero tomemos el caso de que si estuviera bien
+//aqui si funcionara seria una nuevo seria una array asociactiva
 
 
-
-
-
-
-
-
- 
 
 if($nuevo){
+    //si existe nuevo
 if(password_verify($contra,$nuevo["password"])){
-    
+
+    //verifica si la contraseña actual que pusismos en el formulario sea IGUAL a la de la base de datos
+    //si es la buena contraseña hara todo eso:
 $_SESSION["username"]=$name;
-$_SESSION_["es_admin"]=$_SESSION["es_admin"];
+$_SESSION["es_admin"]=$nuevo["es_admin"];
 
 
-set_cookie("id",$nuevo["username"],time()+ 35000 + "/");
-header("Location:login.php");
+//set_cookie("id",$nuevo["username"],time()+ 35000);
+//me crea una cookie llamada como la de session , que me recuerde que solo el username del usuario , le ponemos tiempo (esta en segundo) 
+ 
+header("Location:panel.php");
 exit;
 
 
